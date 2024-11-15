@@ -68,28 +68,29 @@ function App() {
   function getRankColor(rank) {
     switch (rank?.toLowerCase()) {
       case "newbie":
-        return "gray-500";
+        return "bg-gray-400"; // Lighter gray
       case "pupil":
-        return "green-300";
+        return "bg-green-200"; // Softer green
       case "specialist":
-        return "green-500";
+        return "bg-green-300"; // Slightly muted green
       case "expert":
-        return "blue-500";
+        return "bg-blue-300"; // Softer blue
       case "candidate master":
-        return "purple-500";
+        return "bg-purple-300"; // Muted purple
       case "master":
-        return "orange-500";
+        return "bg-orange-300"; // Softer orange
       case "international master":
-        return "orange-600";
+        return "bg-orange-400"; // Less vibrant orange
       case "grandmaster":
       case "international grandmaster":
-        return "red-500";
+        return "bg-red-300"; // Muted red
       case "legendary grandmaster":
-        return "black";
+        return "bg-gray-900"; // Dark gray instead of pure black
       default:
-        return "gray-500"; // Gave default Gray same as newbie rank colour 
+        return "bg-gray-400"; // Default lighter gray
     }
   }
+  
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-2xl font-bold mb-6">CodeForces Problems</h1>
@@ -138,16 +139,16 @@ function App() {
       />
       <div className="flex items-center justify-center mt-4 gap-2 w-full">
 
-        {username && <span className={` flex items-center px-2 py-1 h-12  text-white bg-${getRankColor(rank)}`}>
+        {username && <span className={` flex items-center px-2 py-1 h-12  text-white ${getRankColor(rank)}`}>
           {username}
         </span>
         }
-        {rating && <p className={`flex items-center px-2 py-1 h-12 text-white bg-${getRankColor(rank)}`}> {rating}</p>}
+        {rating && <p className={`flex items-center px-2 py-1 h-12 text-white ${getRankColor(rank)}`}> {rating}</p>}
         {imageURL &&
           <img src={imageURL} alt="User Avatar" className="w-12 h-12 ml-2" />
         }
         {rank &&
-          <span className={`flex items-center px-2 py-1 h-12 text-white bg-${getRankColor(rank)}`}>{rank.toUpperCase()}</span>
+          <span className={`flex items-center px-2 py-1 h-12 text-white ${getRankColor(rank)}`}>{rank.toUpperCase()}</span>
         }
       </div>
 
