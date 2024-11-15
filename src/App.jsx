@@ -8,12 +8,17 @@ function App() {
   const [ratingFilter, setRatingFilter] = useState(1200);
   const [username, setUsername] = useState("");
   const dispatch = useDispatch();
-  const { rating, imageURL, rank  } = useSelector((state) => state.user);
+  const { rating, imageURL, rank } = useSelector((state) => state.user);
   const range = 200;
 
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ["cf"],
     queryFn: fetchdata,
+
+    staleTime: 1000 * 60 * 5,
+    cacheTime: 1000 * 60 * 10,
+    refetchOnWindowFocus: false,
+
   });
 
   async function fetchdata() {
@@ -90,7 +95,7 @@ function App() {
         return "bg-gray-400"; // Default lighter gray
     }
   }
-  
+
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-2xl font-bold mb-6">CodeForces Problems</h1>
