@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setUsername, setRating, setImageURL, setRank } from "./store/userSlice";
+import { setRating, setImageURL, setRank } from "./store/userSlice";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
@@ -14,11 +14,9 @@ function App() {
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ["cf"],
     queryFn: fetchdata,
-
     staleTime: 1000 * 60 * 5,
     cacheTime: 1000 * 60 * 10,
     refetchOnWindowFocus: false,
-
   });
 
   async function fetchdata() {
